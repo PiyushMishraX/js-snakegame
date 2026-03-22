@@ -10,10 +10,9 @@ body {
   width: 100%;
 }
 
-/* why vars , developers create multiple website, so create root variables so the website components remains consistance throughoutt each page  ( scs) */
 :root{
     /* Bachground colors */
-    --bg-primary-color: #0c0c0c; /* variables */
+    --bg-primary-color: #0c0c0c; 
     --bg-fill-color: #fdfdfc;
     --bg-food-color: #ff3b3b;
 
@@ -21,8 +20,8 @@ body {
     --text-primary-color: #f0f0f0;
 
     /* Spacing */
-    --space-xs: 4px; /* extra small */
-    --space-sm: 8px; /* small */
+    --space-xs: 4px; 
+    --space-sm: 8px; 
     --space-md: 16px; 
     --space-lg: 24px;
     --space-xl: 32px; 
@@ -66,25 +65,26 @@ main, section{
 }
 
 .btn:hover{
-    /* transform: scale(1.1%); */
-    /* transform: scale(10.1); */
-    /* transform: scale(100.1); */
+
     transform: scale(1.1);
 }
 
 section{
-    /* padding: 40px; */
     padding: var(--space-2xl); 
     display: flex;
     flex-direction: column;
-    /* align-items: stretch; */
     height: 100%;
-    /* background-color: rgb(9,9,75); */
     gap: var(--space-lg);
 }
 section .infos{
     display: flex;
+    /* justify-content: center; */
     justify-content: space-between;
+
+    /* infos flex fix */
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
 }
 .info{
     padding: var(--space-sm) var(--space-md);
@@ -94,39 +94,21 @@ section .infos{
 
 .board{
     border: 1px solid var(--border-primary-color);
-    flex-grow: 1;  /* felx grow occupies all height left from parent  */
-
-    /* display: flex; blocks squised flex shrinked in on elien
-    flex-wrap: wrap; still problem so use grid */
-
+    flex-grow: 1;  
     display: grid;
-    /*  we don't know number of colums and row it depends on display */
-
-    /* grid-template-columns: repeat(auto-fill, 30px); */
-    /* take width of each particular coloum 30 px and repeat  until filled , if any space is too small leaves it */ /* width / 30 -> number.43 remaining 0.43 is th eamount of space that do not get filled */
-    /* grid-template-rows: repeat(auto-fill, 30px); */
-    
-    /* space left in bttom and right will be filled ( minimum value of block will be 30px at least and can increase 1fraction maximum) reamianing space get distributed between all elements in width (for width ) and row ( for rows ) 
-    1 fraction means length remaining diveding by total elemetns in line , and this get distributed to line eleemtents */
     grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(50px, 1fr)); 
     
-
 
 }
 
 
 .block{
-    /* width: 80px;
-    height: 80px; */
     border: 1px solid var(--border-primary-color);
-    /* flex-shrink: 0; overflow */
 
-    /* border-radius: 50%;  */
-    /* optimization */
-
-    /* extra */
-    /* margin: 2px; */
+    border-radius: 25%;
+    /* border-radius: 50%; */
+    margin: 1.5px;
 
 }
 
@@ -158,10 +140,16 @@ section .infos{
 
 .modal .game-over{
     display: none; 
-    /* hide it in start */
 }
 
 .info{
     display:flex;
     flex-direction: column;
+}
+
+@media (max-width: 500px) {
+  
+  #time {
+    margin: 0 auto;
+  }
 }

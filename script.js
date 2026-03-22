@@ -83,7 +83,7 @@ for(let row =0; row <rows; row++){
         const block = document.createElement('div');
         block.classList.add("block");
         board.appendChild(block);
-        block.innerHTML = `${row}-${col}` ; // cordinates
+        // block.innerHTML = `${row}-${col}` ; // cordinates
         // we need to do this same in js ( we use 2d array - digital ocean )
         blocks[`${row}-${col}`] = block; // block is div so div stored at the i,j value
     }
