@@ -115,7 +115,7 @@ startButton.addEventListener("click", () => {
   modal.style.display = "none";
   intervalId = setInterval(() => {
     render();
-  }, 250);
+  }, 350);
   timerIntervalId = setInterval(() => {
     let [min, sec] = time.split("-").map(Number);
     if (sec == 59) {
@@ -154,7 +154,7 @@ function restartGame() {
   };
   intervalId = setInterval(() => {
     render();
-  }, 250);
+  }, 350);
 }
 
 addEventListener("keydown", (event) => {
