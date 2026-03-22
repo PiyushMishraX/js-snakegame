@@ -7,11 +7,14 @@ const startGameModal = document.querySelector(".start-game");
 const gameOverModal = document.querySelector(".game-over");
 const restartButton = document.querySelector(".btn-restart");
 
-// //  score card
-// const highScoreElement = document.querySelector(".high-score-value");
+//  score card
+const highScoreElement = document.querySelector("#high-score");
+const scoreElement = document.querySelector("#score");
+const timeElement = document.querySelector("#time");
 
 const blockHeight = 50;
 const blockWidth = 50;
+
 
 // Math.floor(boardWidht / block width) = number of blocks fitting
 
@@ -35,6 +38,9 @@ let food = {x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * c
 // if snake csume food we will ad one more block at last of video 
 
 
+
+
+
 const blocks =[]; // because canot create 2D array directly in js so change 1d to 2d at run time // it mimics 2d array
 
 // Snake
@@ -55,6 +61,10 @@ let snake = [{
 let direction = "down";
 
 
+
+
+
+
 for(let row =0; row <rows; row++){
     for (let col = 0; col < cols; col++) {
         const block = document.createElement('div');
@@ -67,6 +77,9 @@ for(let row =0; row <rows; row++){
 }
 
 // console.log(blocks);// blocks array
+
+
+
 
 
 function render(){
@@ -109,8 +122,11 @@ function render(){
         snake.unshift(head); // add another head at start 
         // head jood gaya ab jab fir jab sab cross ho jayenge us fod ke previous lement ko to show karne lagega
         // jab last segment is food ke block ko paar karega tacbhi new element/segmet aayega, kyuki ek jagah do baar (element ho jaayega to use pop karte time 2 element add honge same block ke liye ast mai popping mai , but hai ek hi saath overlapped fill so aisa lagega ki new element add hua hai last mai , ye last mai hoga kyuk tabhi last mai double fills pop honge )
+
+      
     }
     
+
     // clears fill
     snake.forEach(segment=>{
         blocks[`${segment.x}-${segment.y}`].classList.remove("fill");
@@ -127,6 +143,9 @@ function render(){
 
     })
 }
+
+
+
 
 
 
@@ -163,10 +182,14 @@ function render(){
 
 
 
-
 // intervalId = setInterval(() => {
 //     render();
 // }, 400); 
+
+
+
+
+
 
 
 startButton.addEventListener("click",()=>{
