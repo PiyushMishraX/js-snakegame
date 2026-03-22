@@ -85,7 +85,9 @@ section .infos{
     /*  we don't know number of colums and row it depends on display */
 
     grid-template-columns: repeat(auto-fill, 30px);
-    /* take width of each particular coloum 30 px and repeat  until filled , if any space is too small leaves it */
+    /* take width of each particular coloum 30 px and repeat  until filled , if any space is too small leaves it */ /* width / 30 -> number.43 remaining 0.43 is th eamount of space that do not get filled */
+
+    grid-template-rows: repeat(auto-fill, 30px);
 
     
 
