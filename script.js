@@ -27,13 +27,15 @@ const blocks =[]; // because canot create 2D array directly in js so change 1d t
 // Snake
 const snake = [{
     // row , column
-    x:1, y:3
-}, {
-    x:1, y:4   
-}, {
-    x:1, y:5
-}];
-
+    x:1, y:3 // head will be this because this is first element
+}, 
+    // {
+    //   x:1, y:4   
+    // }, {
+    //   x:1, y:5
+    // }
+];
+let direction = "down";  // 'up' 'down' 'left' 'right'
 
 
 for(let row =0; row <rows; row++){
@@ -46,6 +48,9 @@ for(let row =0; row <rows; row++){
         blocks[`${row}-${col}`] = block; // block is div so div stored at the i,j value
     }
 }
+
+// console.log(blocks);// blocks array
+
 
 function render(){
     
@@ -60,4 +65,28 @@ function render(){
 
 
 
-// console.log(blocks);// blocks array
+// every 300 second calclate render new postion using direction 
+setInterval(() => {
+    let head = null;
+    
+    if(direction === "left"){
+        head = {x: snake[0].x , y: snake[0].y-1}
+    }else if(direction === "right"){
+        head = {x: snake[0].x , y: snake[0].y+1}
+    }else if(direction === "down"){
+        head = {x: snake[0].x+1 , y: snake[0].y}
+    }else if(direction === "right"){
+        head = {x: snake[0].x+1 , y: snake[0].y}
+    }
+
+    
+    // clears fill
+    snake.forEach(segment=>{
+        blocks[`${segment.x}-${segment.y}`].classList.remove("fill");
+    })
+   
+    snake.unshift(head); // add one element at start
+    snake.pop(); // remove last segment  // but fill not cleared
+
+    render();
+}, 400); // 0.4 ms moveing 
