@@ -15,6 +15,7 @@ body {
     /* Bachground colors */
     --bg-primary-color: #0c0c0c; /* variables */
     --bg-fill-color: #fdfdfc;
+    --bg-food-color: #ff3b3b;
 
     /* text Colors */
     --text-primary-color: #f0f0f0;
@@ -109,4 +110,8 @@ section .infos{
 
 .fill{
     background-color: var(--bg-fill-color);
+}
+
+.food{
+    background-color: var(--bg-food-color);
 }

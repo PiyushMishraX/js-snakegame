@@ -7,6 +7,7 @@ const blockWidth = 50;
 const cols = Math.floor(board.clientWidth /blockWidth);
 const rows = Math.floor(board.clientHeight /blockHeight);
 let intervalId = null;
+let food = {x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * cols) };
 
 
 
@@ -57,21 +58,11 @@ for(let row =0; row <rows; row++){
 
 
 function render(){
-    
-    snake.forEach(segment=>{ // each elements in snake array
-        // console.log(segment);
 
-        // console.log(blocks[`${segment.x}-${segment.y}`]);
-        blocks[`${segment.x}-${segment.y}`].classList.add("fill");
-
-    })
-}
-
-
-
-// every 300 second calclate render new postion using direction 
-intervalId = setInterval(() => {
     let head = null;
+
+    blocks[ `${food.x}-${food.y}`].classList.add("food"); // fills the food block when no chang ein food then the same will be filled again
+
     
     if(direction === "left"){
         head = {x: snake[0].x , y: snake[0].y-1}
@@ -88,6 +79,15 @@ intervalId = setInterval(() => {
         alert("Game over");
         clearInterval(intervalId);
     }
+
+    // food score logic
+    if(head.x== food.x && head.y ==food.y){
+        // remove fill on the current food
+        blocks[ `${food.x}-${food.y}`].classList.remove("food");
+        food = {x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * cols) };
+        blocks[ `${food.x}-${food.y}`].classList.add("food");
+
+    }
     
     // clears fill
     snake.forEach(segment=>{
@@ -96,9 +96,55 @@ intervalId = setInterval(() => {
    
     snake.unshift(head); // add one element at start
     snake.pop(); // remove last segment  // but fill not cleared
+    
+    snake.forEach(segment=>{ // each elements in snake array
+        // console.log(segment);
 
+        // console.log(blocks[`${segment.x}-${segment.y}`]);
+        blocks[`${segment.x}-${segment.y}`].classList.add("fill");
+
+    })
+}
+
+
+
+// every 300 second calclate render new postion using direction 
+// intervalId = setInterval(() => {
+//     let head = null;
+    
+//     if(direction === "left"){
+//         head = {x: snake[0].x , y: snake[0].y-1}
+//     }else if(direction === "right"){
+//         head = {x: snake[0].x , y: snake[0].y+1}
+//     }else if(direction === "down"){
+//         head = {x: snake[0].x+1 , y: snake[0].y}
+//     }else if(direction === "up"){
+//         head = {x: snake[0].x-1 , y: snake[0].y}
+//     }
+
+
+//     if(head.x < 0 || head.x >= rows || head.y < 0 || head.y >= cols){
+//         alert("Game over");
+//         clearInterval(intervalId);
+//     }
+    
+//     // clears fill
+//     snake.forEach(segment=>{
+//         blocks[`${segment.x}-${segment.y}`].classList.remove("fill");
+//     })
+   
+//     snake.unshift(head); // add one element at start
+//     snake.pop(); // remove last segment  // but fill not cleared
+
+//     render();
+// }, 400); // 0.4 ms moving 
+
+
+
+
+intervalId = setInterval(() => {
     render();
-}, 400); // 0.4 ms moving 
+}, 400); 
 
 
 /* ArrowUp
