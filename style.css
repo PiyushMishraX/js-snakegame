@@ -14,6 +14,7 @@ body {
 :root{
     /* Bachground colors */
     --bg-primary-color: #0c0c0c; /* variables */
+    --bg-fill-color: #fdfdfc;
 
     /* text Colors */
     --text-primary-color: #f0f0f0;
@@ -90,8 +91,8 @@ section .infos{
     
     /* space left in bttom and right will be filled ( minimum value of block will be 30px at least and can increase 1fraction maximum) reamianing space get distributed between all elements in width (for width ) and row ( for rows ) 
     1 fraction means length remaining diveding by total elemetns in line , and this get distributed to line eleemtents */
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(80px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(50px, 1fr)); 
     
 
 
@@ -104,5 +105,8 @@ section .infos{
     border: 1px solid var(--border-primary-color);
     /* flex-shrink: 0; overflow */
 
+}
 
+.fill{
+    background-color: var(--bg-fill-color);
 }

@@ -1,11 +1,12 @@
 const board = document.querySelector('.board');
-const blockHeight = 80;
-const blockWidth = 80;
+const blockHeight = 50;
+const blockWidth = 50;
 
 // Math.floor(boardWidht / block width) = number of blocks fitting
 
 const cols = Math.floor(board.clientWidth /blockWidth);
 const rows = Math.floor(board.clientHeight /blockHeight);
+
 
 
 // for(let i=0; i< rows * cols ; i++){
@@ -21,7 +22,18 @@ const rows = Math.floor(board.clientHeight /blockHeight);
 // if snake csume food we will ad one more block at last of video 
 
 
-const blocks =[] // because canot create 2D array directly in js so change 1d to 2d at run time // it mimics 2d array
+const blocks =[]; // because canot create 2D array directly in js so change 1d to 2d at run time // it mimics 2d array
+
+// Snake
+const snake = [{
+    // row , column
+    x:1, y:3
+}, {
+    x:1, y:4   
+}, {
+    x:1, y:5
+}];
+
 
 
 for(let row =0; row <rows; row++){
@@ -29,9 +41,23 @@ for(let row =0; row <rows; row++){
         const block = document.createElement('div');
         block.classList.add("block");
         board.appendChild(block);
-        // block.innerHTML = `${row}-${col}` ; // cordinates
+        block.innerHTML = `${row}-${col}` ; // cordinates
         // we need to do this same in js ( we use 2d array - digital ocean )
-        blocks[`${row}-${col}`] = block 
+        blocks[`${row}-${col}`] = block; // block is div so div stored at the i,j value
     }
 }
 
+function render(){
+    
+    snake.forEach(segment=>{ // each elements in snake array
+        // console.log(segment);
+
+        // console.log(blocks[`${segment.x}-${segment.y}`]);
+        blocks[`${segment.x}-${segment.y}`].classList.add("fill");
+
+    })
+}
+
+
+
+// console.log(blocks);// blocks array
