@@ -30,7 +30,10 @@ highScoreElement.innerHTML = highScore;
 
 const cols = Math.floor(board.clientWidth /blockWidth);
 const rows = Math.floor(board.clientHeight /blockHeight);
+
 let intervalId = null;
+let timerIntervalId = null;
+
 let food = {x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * cols) };
 
 
@@ -208,13 +211,28 @@ function render(){
 
 
 
-
+// time 
+// time.split("-")
+// (2) ['00', '00']
+// const [m,s] = time.split("-") destructuring
 
 
 
 startButton.addEventListener("click",()=>{
     modal.style.display = "none";
     intervalId = setInterval(() => { render(); }, 300);
+    timerIntervalId = setInterval(() => {
+        let[min,sec] = time.split("-").map(Number) // destructuring // map(Number) covert array to to number ( no string values)
+        if(sec == 59){
+            min += 1
+            sec = 0
+        }else{
+            sec+=1
+        }
+
+        time =`${min}-${sec}`
+        timeElement.innerHTML = time
+    },1000 );
 })
 
 restartButton.addEventListener("click", restartGame);
