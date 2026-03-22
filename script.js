@@ -176,7 +176,21 @@ startButton.addEventListener("click",()=>{
 
 restartButton.addEventListener("click", restartGame);
 
+function restartGame(){
 
+    // clear older items 
+    blocks[ `${food.x}-${food.y}`].classList.remove("food");
+    snake.forEach(segment=>{
+        blocks[`${segment.x}-${segment.y}`].classList.remove("fill");
+    })
+
+    modal.style.display = "none";
+    direction ="down";
+    snake = [{x:1,y:3}];
+    food = {x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * cols) };
+    intervalId = setInterval(() => { render(); }, 300);
+
+}
 
 
 /* ArrowUp
