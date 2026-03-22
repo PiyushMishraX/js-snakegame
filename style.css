@@ -77,7 +77,20 @@ section .infos{
 .board{
     border: 1px solid var(--border-primary-color);
     flex-grow: 1;  /* felx grow occupies all height left from parent  */
-    display: flex; /* blocks squised */
+
+    /* display: flex; blocks squised flex shrinked in on elien
+    flex-wrap: wrap; still problem so use grid */
+
+    display: grid;
+    /*  we don't know number of colums and row it depends on display */
+
+    grid-template-columns: repeat(auto-fill, 30px);
+    /* take width of each particular coloum 30 px and repeat  until filled , if any space is too small leaves it */
+
+    
+
+    
+
 }
 
 
@@ -85,4 +98,7 @@ section .infos{
     width: 30px;
     height: 30px;
     border: 1px solid var(--border-primary-color);
+    /* flex-shrink: 0; overflow */
+
+
 }
