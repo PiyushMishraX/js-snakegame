@@ -15,9 +15,16 @@ const timeElement = document.querySelector("#time");
 const blockHeight = 50;
 const blockWidth = 50;
 
-let highScore = 0
+// let highScore = 0
+let highScore = localStorage.getItem("highScore") || 0 // if undeifned comes at the start( if no local storaage create) , the vlaue will show 0 ( undefined or 0 => 0 or 0 which is 0)
 let score = 0
 let time = `00-00`
+
+console.log(localStorage.getItem("highScore")); 
+
+console.log(highScore)
+
+highScoreElement.innerHTML = highScore;
 
 // Math.floor(boardWidht / block width) = number of blocks fitting
 
@@ -127,8 +134,15 @@ function render(){
         // jab last segment is food ke block ko paar karega tacbhi new element/segmet aayega, kyuki ek jagah do baar (element ho jaayega to use pop karte time 2 element add honge same block ke liye ast mai popping mai , but hai ek hi saath overlapped fill so aisa lagega ki new element add hua hai last mai , ye last mai hoga kyuk tabhi last mai double fills pop honge )
 
         // score logic
-        score +=10
+        score += 10
         scoreElement.innerHTML = score;
+
+        // local sorage in -> inspect -> applications -> Storage -> localstorage-> site link
+        if( score > highScore){
+            highScore = score
+            localStorage.setItem("highScore", highScore.toString()); // coverted to string  // beacuse local storgae only saves value as string
+        }
+
     }
     
 
@@ -145,6 +159,7 @@ function render(){
 
         // console.log(blocks[`${segment.x}-${segment.y}`]);
         blocks[`${segment.x}-${segment.y}`].classList.add("fill");
+
 
     })
 }
@@ -207,6 +222,14 @@ restartButton.addEventListener("click", restartGame);
 function restartGame(){
 
     // clear older items 
+
+    score = 0;
+    time = `00-00`
+
+    scoreElement.innerHTML = score;
+    timeElement.innerHTML = time
+    highScoreElement.innerHTML = highScore
+
     blocks[ `${food.x}-${food.y}`].classList.remove("food");
     snake.forEach(segment=>{
         blocks[`${segment.x}-${segment.y}`].classList.remove("fill");
