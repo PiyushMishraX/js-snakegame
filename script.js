@@ -6,6 +6,7 @@ const blockWidth = 50;
 
 const cols = Math.floor(board.clientWidth /blockWidth);
 const rows = Math.floor(board.clientHeight /blockHeight);
+let intervalId = null;
 
 
 
@@ -69,7 +70,7 @@ function render(){
 
 
 // every 300 second calclate render new postion using direction 
-setInterval(() => {
+intervalId = setInterval(() => {
     let head = null;
     
     if(direction === "left"){
@@ -82,6 +83,11 @@ setInterval(() => {
         head = {x: snake[0].x-1 , y: snake[0].y}
     }
 
+
+    if(head.x < 0 || head.x >= rows || head.y < 0 || head.y >= cols){
+        alert("Game over");
+        clearInterval(intervalId);
+    }
     
     // clears fill
     snake.forEach(segment=>{
