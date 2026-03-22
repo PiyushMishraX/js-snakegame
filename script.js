@@ -35,7 +35,10 @@ const snake = [{
     //   x:1, y:5
     // }
 ];
-let direction = "down";  // 'up' 'down' 'left' 'right'
+// let direction = "right";  // 'up' 'down' 'left' 'right'
+// let direction = "left";
+// let direction = "up";
+let direction = "down";
 
 
 for(let row =0; row <rows; row++){
@@ -75,8 +78,8 @@ setInterval(() => {
         head = {x: snake[0].x , y: snake[0].y+1}
     }else if(direction === "down"){
         head = {x: snake[0].x+1 , y: snake[0].y}
-    }else if(direction === "right"){
-        head = {x: snake[0].x+1 , y: snake[0].y}
+    }else if(direction === "up"){
+        head = {x: snake[0].x-1 , y: snake[0].y}
     }
 
     
@@ -89,4 +92,22 @@ setInterval(() => {
     snake.pop(); // remove last segment  // but fill not cleared
 
     render();
-}, 400); // 0.4 ms moveing 
+}, 400); // 0.4 ms moving 
+
+
+/* ArrowUp
+ ArrowRight
+ ArrowLeft
+ ArrowDown */
+addEventListener("keydown",(event)=>{
+    // console.log(event.key); 
+    if(event.key === "ArrowUp"){
+        direction = "up";
+    }else if(event.key === "ArrowLeft"){
+        direction = "left";
+    }else if(event.key === "ArrowRight"){
+        direction = "right";
+    }else if(event.key === "ArrowDown"){
+        direction = "down";
+    }
+})
