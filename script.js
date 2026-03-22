@@ -15,6 +15,9 @@ const timeElement = document.querySelector("#time");
 const blockHeight = 50;
 const blockWidth = 50;
 
+let highScore = 0
+let score = 0
+let time = `00-00`
 
 // Math.floor(boardWidht / block width) = number of blocks fitting
 
@@ -123,7 +126,9 @@ function render(){
         // head jood gaya ab jab fir jab sab cross ho jayenge us fod ke previous lement ko to show karne lagega
         // jab last segment is food ke block ko paar karega tacbhi new element/segmet aayega, kyuki ek jagah do baar (element ho jaayega to use pop karte time 2 element add honge same block ke liye ast mai popping mai , but hai ek hi saath overlapped fill so aisa lagega ki new element add hua hai last mai , ye last mai hoga kyuk tabhi last mai double fills pop honge )
 
-      
+        // score logic
+        score +=10
+        scoreElement.innerHTML = score;
     }
     
 
