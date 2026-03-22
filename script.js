@@ -1,6 +1,14 @@
 const board = document.querySelector('.board');
+
+// modal
 const startButton = document.querySelector(".btn-start");
 const modal = document.querySelector(".modal");
+const startGameModal = document.querySelector(".start-game");
+const gameOverModal = document.querySelector(".game-over");
+const restartButton = document.querySelector(".btn-restart");
+
+// //  score card
+// const highScoreElement = document.querySelector(".high-score-value");
 
 const blockHeight = 50;
 const blockWidth = 50;
@@ -30,7 +38,8 @@ let food = {x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * c
 const blocks =[]; // because canot create 2D array directly in js so change 1d to 2d at run time // it mimics 2d array
 
 // Snake
-const snake = [{
+// const snake = [{ // let so we can change it in restart function
+let snake = [{
     // row , column
     x:1, y:3 // head will be this because this is first element
 }, 
@@ -79,8 +88,15 @@ function render(){
 
 
     if(head.x < 0 || head.x >= rows || head.y < 0 || head.y >= cols){
-        alert("Game over");
+        // alert("Game over");
         clearInterval(intervalId);
+
+        // restart menu / game over menu
+        modal.style.display ="flex";
+        startGameModal.style.display = "none";
+        gameOverModal.style.display = "flex";
+
+        return; // stop
     }
 
     // food score logic
@@ -157,6 +173,9 @@ startButton.addEventListener("click",()=>{
     modal.style.display = "none";
     intervalId = setInterval(() => { render(); }, 300);
 })
+
+restartButton.addEventListener("click", restartGame);
+
 
 
 
