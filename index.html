@@ -1,42 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Snake Game</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <main>
-        <section>
-            <div class="infos">
-                <div class="info">
-                    <h3>High Score:
-                        <span id="high-score">0</span>
-                    </h3>
-                </div>
-                <div class="info">
-                    <h3>Score:
-                        <span id="high-score">0</span>
-                    </h3>
-                </div>
-                <div class="info">
-                    <h3>Time:
-                        <span id="high-score">00-00</span>
-                    </h3>
-                </div>
-            </div>
-            <div class="board">
-                <!-- <div class="block"></div>
-                <div class="block"></div>  uising js to get number of blocks -->
-               
-            </div>
-        </section>
+      <section>
+        <div class="infos">
+          <div class="info">
+            <h3>
+              High Score:
+              <span id="high-score">0</span>
+            </h3>
+          </div>
+          <div class="info">
+            <h3>
+              Score:
+              <span id="high-score">0</span>
+            </h3>
+          </div>
+          <div class="info">
+            <h3>
+              Time:
+              <span id="high-score">00-00</span>
+            </h3>
+          </div>
+        </div>
+        <div class="board">
+          <!-- <div class="block"></div>
+            <div class="block"></div>  uising js to get number of blocks -->
+        </div>
+      </section>
+      <div class="modal">
+        <div class="start-game">
+          <h3>Welcome to the Snake Game</h3>
+          <button class="btn btn-start">Start Game</button>
+        </div>
+      </div>
     </main>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
-
 
 <!-- no. blocks changes according to screen size ,
  each block height and width are same ( 20 x 20 ) -->

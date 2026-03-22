@@ -56,6 +56,22 @@ main, section{
     height: 100%;
 }
 
+/* button start restart */
+.btn{
+    padding: var(--space-sm) var(--space-md);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover{
+    /* transform: scale(1.1%); */
+    /* transform: scale(10.1); */
+    /* transform: scale(100.1); */
+    transform: scale(1.1);
+}
+
 section{
     /* padding: 40px; */
     padding: var(--space-2xl); 
@@ -114,4 +130,22 @@ section .infos{
 
 .food{
     background-color: var(--bg-food-color);
+}
+
+.modal {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    background-color: #35353587;
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal .start-game{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
 }
