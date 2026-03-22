@@ -1,6 +1,6 @@
 const board = document.querySelector('.board');
-const blockHeight = 30;
-const blockWidth = 30;
+const blockHeight = 80;
+const blockWidth = 80;
 
 // Math.floor(boardWidht / block width) = number of blocks fitting
 
@@ -21,11 +21,17 @@ const rows = Math.floor(board.clientHeight /blockHeight);
 // if snake csume food we will ad one more block at last of video 
 
 
+const blocks =[] // because canot create 2D array directly in js so change 1d to 2d at run time // it mimics 2d array
+
 
 for(let row =0; row <rows; row++){
     for (let col = 0; col < cols; col++) {
         const block = document.createElement('div');
         block.classList.add("block");
         board.appendChild(block);
+        // block.innerHTML = `${row}-${col}` ; // cordinates
+        // we need to do this same in js ( we use 2d array - digital ocean )
+        blocks[`${row}-${col}`] = block 
     }
 }
+
