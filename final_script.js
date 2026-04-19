@@ -6,6 +6,9 @@ const startGameModal = document.querySelector(".start-game");
 const gameOverModal = document.querySelector(".game-over");
 const restartButton = document.querySelector(".btn-restart");
 
+const gameOverScoreCurrent = document.querySelector(".gameOverScoreCurrent");
+const gameOverScoreHigh = document.querySelector(".gameOverScoreHigh");
+
 const highScoreElement = document.querySelector("#high-score");
 const scoreElement = document.querySelector("#score");
 const timeElement = document.querySelector("#time");
@@ -74,6 +77,8 @@ function render() {
 
     modal.style.display = "flex";
     startGameModal.style.display = "none";
+    gameOverScoreCurrent.innerHTML= scoreElement.innerHTML
+    gameOverScoreHigh.innerHTML= highScoreElement.innerHTML
     gameOverModal.style.display = "flex";
 
     return;
