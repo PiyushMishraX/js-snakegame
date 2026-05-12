@@ -1,7 +1,5 @@
 const board = document.querySelector(".board");
 
-// sounds
-
 
 const startButton = document.querySelector(".btn-start");
 const modal = document.querySelector(".modal");
@@ -22,6 +20,13 @@ const blockWidth = 50;
 let highScore = localStorage.getItem("highScore") || 0;
 let score = 0;
 let time = `00-00`;
+
+// sound
+const audioEat = new Audio('/sfx/music_food.mp3');
+    // audioEat.play()
+audioEat.preload = 'auto'; // preload the audio to remove delay
+// Ensure it loads even if not autoplaying
+audioEat.load(); 
 
 
 console.log(highScore);
@@ -101,7 +106,7 @@ function render() {
 
     // Eating audio
     // audioEat.currentTime = 0;
-    const audioEat = new Audio('/sfx/music_food.mp3');
+    // const audioEat = new Audio('/sfx/music_food.mp3');
     audioEat.play()
 
 

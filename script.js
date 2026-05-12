@@ -27,6 +27,7 @@ console.log(highScore)
 highScoreElement.innerHTML = highScore;
 
 // Math.floor(boardWidht / block width) = number of blocks fitting
+// Math.floor(number) converts any number to integer ( lowers the value ) 4.7 -> 4
 
 const cols = Math.floor(board.clientWidth /blockWidth);
 const rows = Math.floor(board.clientHeight /blockHeight);
