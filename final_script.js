@@ -185,17 +185,33 @@ function restartGame() {
 }
 
 addEventListener("keydown", (event) => {
+  //  if (event.key === "ArrowUp") {
+  //   if(direction !== "down")
+  //   direction = "up";
+  // } else if (event.key === "ArrowLeft") {
+  //   if(direction !== "right")
+  //   direction = "left";
+  // } else if (event.key === "ArrowRight") {
+  //   if(direction !== "left")
+  //   direction = "right";
+  // } else if (event.key === "ArrowDown") {
+  //   if(direction !== "up")
+  //   direction = "down";
+  // }
+
    if (event.key === "ArrowUp") {
+    if(direction !== "down" || snake.length === 1)
     direction = "up";
   } else if (event.key === "ArrowLeft") {
+    if(direction !== "right" || snake.length === 1)
     direction = "left";
   } else if (event.key === "ArrowRight") {
+    if(direction !== "left" || snake.length === 1)
     direction = "right";
   } else if (event.key === "ArrowDown") {
+    if(direction !== "up" || snake.length === 1)
     direction = "down";
   }
-
-
 });
 
 
