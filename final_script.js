@@ -76,7 +76,16 @@ function render() {
     head = { x: snake[0].x - 1, y: snake[0].y };
   }
 
-  if (head.x < 0 || head.x >= rows || head.y < 0 || head.y >= cols) {
+  // --- SELF COLLISION game end --->>
+  // const isSelfCollision = snake.some(segment => segment.x === head.x && segment.y === head.y);
+  // some method is like a loop here it checks all the element it they are true or not segment is each element which will get compared to the head 
+
+  const isSelfCollision = snake.some( (segment) =>{
+    // segment.x === head.x && segment.y === head.y;// add written becase some method returns true or false
+    return segment.x === head.x && segment.y === head.y;
+  });
+
+  if (head.x < 0 || head.x >= rows || head.y < 0 || head.y >= cols || isSelfCollision) {
     clearInterval(intervalId);
 
     modal.style.display = "flex";
@@ -176,7 +185,7 @@ function restartGame() {
 }
 
 addEventListener("keydown", (event) => {
-  if (event.key === "ArrowUp") {
+   if (event.key === "ArrowUp") {
     direction = "up";
   } else if (event.key === "ArrowLeft") {
     direction = "left";
@@ -185,4 +194,9 @@ addEventListener("keydown", (event) => {
   } else if (event.key === "ArrowDown") {
     direction = "down";
   }
+
+
 });
+
+
+console.log(snake.length);
